@@ -40,6 +40,7 @@ flutter:
     - images/Hoode_Beach.jpg
     - images/Student Plaza.jpg
     - images/TC.jpg
+    - images/TC_1.jpeg
     - images/End point.jpg
     - images/AB2.jpeg
     - images/AB-5.jpg
@@ -47,7 +48,12 @@ flutter:
     - images/NLHRoad.jpeg
     - images/Near arbi falls.jpg
     - images/MIT.jpeg
+    - images/MIT_1.jpeg
+  fonts:
 
+    - family: Caveat
+      fonts:
+        - asset: font/Caveat-Regular.ttf
 
 
 

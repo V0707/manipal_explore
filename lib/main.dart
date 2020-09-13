@@ -1,6 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+//import 'package:manipal_explore/ABList.dart';
+//import 'info.dart';
+//import 'picture.dart';
+import 'ABScreen.dart';
+import 'BeachScreen.dart';
+import 'RecreationScreen.dart';
+//14th sep
 void main() => runApp(new Manipal());
 
 class Manipal extends StatelessWidget {
@@ -19,18 +26,32 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
+  //static List<Widget> myPages = <Widget>[RecreationScreen(), ABScreen(), BeachesScreen()];
+
+  //int _selectedIndex = 0;
+
+  /*void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Manipal Explorer',style: TextStyle(color: Colors.white, fontSize: 20),),
-        backgroundColor: Colors.blue.shade900,
+        backgroundColor: Colors.grey.shade900,
         centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search,color: Colors.white,),
+            onPressed: (){
+              //Search();
+            },
           ),
         ],
+
       ),
       drawer: Drawer(
         child: ListView(
@@ -38,35 +59,35 @@ class _homepageState extends State<homepage> {
           children: <Widget>[
             Container(
               height: 90,
-              color: Colors.blue.shade800,
+              color: Colors.grey.shade800,
               child: DrawerHeader(
                 child: Text('places', style: TextStyle(color: Colors.white, fontSize:25),),
               ),
             ),
             //Divider(thickness: 1.0,),
             ListTile(
-                leading: Icon(Icons.business, color: Colors.blue,),
+                leading: Icon(Icons.school),
                 title: Text('Academic buildings',style: TextStyle(fontSize: 18,)),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ABScreen()),);
               },
             ),
             ListTile(
-              leading: Icon(Icons.group),
+              leading: Icon(Icons.games),
               title: Text('Recreation',style: TextStyle(fontSize: 18),),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => RecreationScreen()),);
               },
             ),
             ListTile(
-              leading: Icon(Icons.local_offer),
+              leading: Icon(Icons.beach_access),
               title: Text('Beaches',style: TextStyle(fontSize: 18),),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => BeachesScreen()),);
               },
             ),
             ListTile(
-              leading: Icon(Icons.forum),
+              leading: Icon(Icons.restaurant),
               title: Text('Food courts',style: TextStyle(fontSize: 18),),
             ),
           ],
@@ -78,109 +99,55 @@ class _homepageState extends State<homepage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Image(
-                image: AssetImage('images/MIT.jpeg'),
+                image: AssetImage('images/MIT_1.jpeg'),
               ),
-            )
+            ),
+            Text('MANIPAL INSTITUTE OF TECHNOLOGY', style: TextStyle(fontSize: 25,fontFamily: 'Caveat'),),
+            //Lists(context),
           ],
         ),
       ),
-    );
-  }
-}
 
-Widget picture({String imageName, String text}){
-  return ListTile(
-    title:  Card(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: <Widget>[
-              Image(
-                image: AssetImage('images/$imageName.jpg'),
-              ),
-              Text('$text', style: TextStyle(fontSize: 20),),
-            ],
-          ),
-        ),
-      ),
-  );
-}
-
-class BeachesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      //backgroundColor: Colors.grey.shade800,
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent.shade700,
-        title: Text('Beaches',style: TextStyle(fontSize: 30,color: Colors.white,),),
-        centerTitle: true,
-      ),
-      body:Container(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: ListView(
-            children: <Widget>[
-               picture(imageName: 'Kaup_beach', text:'KAUP BEACH'),
-              picture(imageName: 'Malpe beach', text:'MALPE BEACH'),
-              picture(imageName: 'Mattu beach', text:'MATTU BEACH'),
-              picture(imageName: 'Hoode_Beach', text:'HOODE BEACH'),
-            ],
-          )
-        ),
-      ),
-    );
-  }
-}
-
-class RecreationScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      //backgroundColor: Colors.grey.shade800,
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent.shade700,
-        title: Text('Recreation',style: TextStyle(fontSize: 30,color: Colors.white,),),
-        centerTitle: true,
-      ),
-      body:Container(
-        child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView(
-              children: <Widget>[
-                picture(imageName: 'Student Plaza', text:'STUDENT PLAZA'),
-                picture(imageName: 'TC', text:'TIGER CIRCLE'),
-                picture(imageName: 'End point', text:'END POINT'),
-              ],
+      /*bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const<BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
             ),
-        ),
-      ),
+            title: Text('home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.games,
+            ),
+            title: Text('Recreation'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.school,
+            ),
+            title: Text('On Campus'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.beach_access,
+            ),
+            title: Text('Beaches'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped
+      ),*/
     );
   }
 }
 
-class ABScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      //backgroundColor: Colors.grey.shade800,
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent.shade700,
-        title: Text('Beaches',style: TextStyle(fontSize: 30,color: Colors.white,),),
-        centerTitle: true,
-      ),
-      body:Container(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: ListView(
-            children: <Widget>[
-              //picture(imageName: 'AB2', text:'ACADEMIC BLOCK-2'),
-              picture(imageName: 'AB-5', text:'ACADEMIC BLOCK 5'),
-              //picture(imageName: 'NLHRoad', text:'END POINT'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//info i=info('6-7km','nedibdewubi');
+
+
+
+
+
+
+
